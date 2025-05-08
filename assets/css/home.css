@@ -105,7 +105,7 @@
 .map-container {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 arány */
+  padding-top: 56.25%;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--card-bg);
@@ -126,7 +126,6 @@
   border: 0;
 }
 
-/* Térkép és a lábléc közti extra hely */
 .map-section {
   margin-bottom: calc(var(--gap) + 100px);
 }

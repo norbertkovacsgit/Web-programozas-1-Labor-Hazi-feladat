@@ -1,8 +1,6 @@
-/* Ha a cookie-oldalnak külön tuning kell */
 article.legal.cookie {
   /* örököl minden legal.css-ből, ide jöhet egyedi */
 }
-/* Például a listákat itt teheted szebbé */
 article.legal.cookie ul li {
   margin-bottom: 0.5rem;
 }

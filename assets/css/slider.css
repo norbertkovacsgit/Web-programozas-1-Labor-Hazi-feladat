@@ -19,7 +19,7 @@
 
 .video-slider .slides {
   display: flex;
-  width: calc(100% * 2); /* két slide */
+  width: calc(100% * 2);
   transition: transform var(--slider-transition);
 }
 
@@ -35,7 +35,7 @@
 .video-container {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 arány */
+  padding-top: 56.25%;
   overflow: hidden;
   border-radius: var(--slider-radius);
 }
@@ -78,7 +78,6 @@
   right: 1rem;
 }
 
-/* Reszponzív */
 @media (max-width: 768px) {
   .video-slider .slide {
     flex: 0 0 100%;

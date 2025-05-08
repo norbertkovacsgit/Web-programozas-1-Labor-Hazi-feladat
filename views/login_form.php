@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['do'] ?? '') === 'login') {
         $stmt->execute([$login]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user && password_verify($pw, $user['password'])) {
-            // Sikeres belépés → session beállítása, maradunk a főoldalon
             $_SESSION['user'] = [
                 'id'     => $user['id'],
                 'login'  => $user['login'],

@@ -90,7 +90,6 @@ $images = array_values(array_filter(scandir($uploadDir), function($f) use ($uplo
       </div>
 
      <?php if ($canUpload): ?>
-        <!-- PIROS TÖRLÉS GOMB csak bejelentkezettnek -->
         <form id="deleteForm" method="post" class="my-4">
           <input type="hidden" name="delete" id="deleteInput" value="">
           <button type="submit" class="btn btn-danger">Törlés</button>
@@ -126,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function(){
     update();
   });
 
-  // indításkor is beállítjuk
   update();
 });
 </script>

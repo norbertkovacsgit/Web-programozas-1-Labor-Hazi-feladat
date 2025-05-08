@@ -25,7 +25,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Mindig egymás alatti boxok */
 .message-grid {
   display: flex;
   flex-direction: column;

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 session_start();
 
-// === 1) KONFIGURÁCIÓ – MINDIG EZ JÖJJÖN LEGTETEJÉRE ===
+// === 1) KONFIGURÁCIÓ ===
 $config = [
     'site_name'   => 'Web-programozás 1 - Beadandó feladat',
     'menu'        => [
@@ -26,24 +26,23 @@ if (isset($_GET['page']) && $_GET['page'] === 'logout') {
     exit;
 }
 
-// --- 3) Ha GET vagy POST érkezik login/register-hez, modalTab, de háttér mindig 'home' ---
+// --- 3)GET - POST ---
 $modalTab = null;
-// POST login/register esetén (és hibák esetén is marad a modal)
+// POST login/register esetén
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($_POST['do'] ?? '', ['login','register'], true)) {
     $modalTab = $_POST['do'];
     $page     = $config['default_page'];
 }
-// GET ?page=login vagy ?page=register esetén
 elseif (in_array($_GET['page'] ?? '', ['login','register'], true)) {
     $modalTab = $_GET['page'];
     $page     = $config['default_page'];
 }
-// egyébként sima page routing
+
 else {
     $page = $_GET['page'] ?? $config['default_page'];
 }
 
-// === 4) EGYBÉ POST-FELDOLGOZÁSOK (register, login, contact, gallery…) ===
+// === 4) EGYÉb POST-FELDOLGOZÁSOK (register, login, contact, gallery…) ===
 // --- 1) REGISTER ---
 $registerErrors = [];
 if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['do']??'')==='register') {
@@ -135,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['do'] ?? '') === 'contact')
         $pdo = new PDO('sqlite:'.$dbFile);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // ha már létezik a tábla, csak ne hozzuk újjá, de ha nincs
+        // Létező tábla
         $pdo->exec("
           CREATE TABLE IF NOT EXISTS contacts (
             id          INTEGER PRIMARY KEY,
@@ -148,11 +147,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['do'] ?? '') === 'contact')
           )
         ");
 
-        // 3) Migráció: ha régebbi tábla van, adjuk hozzá az is_guest oszlopot
+        // 3) Régi tábla migráció
         try {
           $pdo->exec("ALTER TABLE contacts ADD COLUMN is_guest INTEGER DEFAULT 1");
         } catch (PDOException $e) {
-          // ha már ott van, ezt a hibát eldobjuk
         }
 
         // 4) Vendég vagy bejelentkezett
@@ -232,7 +230,7 @@ $allowed = array_merge(
     array_keys($config['footer_menu']),
     $config['extra_pages']
 );
-// Ha a $page épp nem engedélyezett (és nem volt login/register), 404
+// 404 hiba
 if (!in_array($page, $allowed, true)) {
     http_response_code(404);
     $page = '404';
@@ -274,7 +272,6 @@ if (isset($config['menu'][$page])) {
 document.addEventListener('DOMContentLoaded', function(){
   var m = new bootstrap.Modal(document.getElementById('authModal'));
   m.show();
-  // kiválasztjuk a tab-ot
   var selector = (<?= json_encode($modalTab) ?> === 'login')
     ? '#login-tab'
     : '#register-tab';
@@ -341,7 +338,7 @@ if (is_file($viewFile)) {
         <!-- Eredeti lábléc -->
         <p><a href="https://vaszilijedc.hu" target="_blank" rel="noopener">Vissza a vaszilijedc.hu-ra</a></p>
 
-        <!-- Új footer menü -->
+        <!-- Footer menü -->
         <nav class="footer-nav">
             <ul>
                 <?php foreach ($config['footer_menu'] as $key => $label): ?>

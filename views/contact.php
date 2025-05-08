@@ -1,6 +1,5 @@
 <?php
 // views/contact.php
-// A session indítása és a POST-feldolgozás már az index.php tetején történik.
 
 $errors   = $_REQUEST['_contact_errors'] ?? [];
 $name     = $_REQUEST['_contact_old']['name']    ?? '';
