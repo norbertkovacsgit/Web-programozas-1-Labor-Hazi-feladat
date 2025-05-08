@@ -1,0 +1,88 @@
+/* assets/css/slider.css */
+
+:root {
+  --slider-radius: 8px;
+  --slider-transition: 0.4s ease;
+  --gap: 1.5rem;
+  --accent-color: #007acc;
+}
+
+.video-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  margin: var(--gap) auto;
+  display: flex;
+  align-items: stretch;
+}
+
+.video-slider .slides {
+  display: flex;
+  width: calc(100% * 2); /* két slide */
+  transition: transform var(--slider-transition);
+}
+
+.video-slider .slide {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+/* Videó- és iframe-konténer arány megtartással */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 arány */
+  overflow: hidden;
+  border-radius: var(--slider-radius);
+}
+
+.video-container video,
+.video-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Slider nav gombok */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  color: var(--accent-color);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background var(--slider-transition), color var(--slider-transition);
+}
+.slider-nav:hover {
+  background: rgba(255,255,255,0.9);
+}
+.slider-nav.prev {
+  left: 1rem;
+}
+.slider-nav.next {
+  right: 1rem;
+}
+
+/* Reszponzív */
+@media (max-width: 768px) {
+  .video-slider .slide {
+    flex: 0 0 100%;
+  }
+}
+
+

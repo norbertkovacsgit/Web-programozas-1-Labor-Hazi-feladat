@@ -1,0 +1,91 @@
+/* assets/css/auth.css */
+:root {
+  --gap: 1.5rem;
+  --radius: 8px;
+  --accent: #007acc;
+  --primary: #005a99;
+  --card-bg: #fff;
+  --form-bg: #f0f8ff;
+  --text: #333;
+  --transition: 0.3s ease;
+}
+
+.auth {
+  max-width: 400px;
+  margin: var(--gap) auto;
+  padding: var(--gap);
+  background: var(--form-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.auth h1 {
+  text-align: center;
+  margin-bottom: var(--gap);
+  font-size: 1.75rem;
+  background: linear-gradient(45deg, var(--accent), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-group {
+  margin-bottom: var(--gap);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--accent);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  transition: border var(--transition);
+}
+
+.form-group input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.error {
+  color: #d0454c;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(45deg, var(--accent), var(--primary));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.auth p {
+  margin-top: calc(var(--gap) / 2);
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.auth a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.auth a:hover {
+  text-decoration: underline;
+}
+

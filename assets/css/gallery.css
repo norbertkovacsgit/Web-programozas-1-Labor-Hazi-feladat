@@ -1,0 +1,163 @@
+:root {
+  --slider-radius: 8px;
+  --slider-gap: 1rem;
+  --slider-transition: 0.4s ease;
+  --accent-color: #007acc;
+  --primary-color: #005a99;
+  --text-color: #333;
+}
+
+.gallery {
+  max-width: 900px;
+  margin: var(--slider-gap) auto;
+  padding: 0 var(--slider-gap);
+}
+.gallery h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--slider-gap);
+}
+.upload-form {
+  background: #fff;
+  padding: var(--slider-gap);
+  border-radius: var(--slider-radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: var(--slider-gap);
+}
+.upload-form h2 {
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+.upload-form form {
+  display: flex;
+  gap: 1rem;
+}
+.upload-form input[type="file"] {
+  flex: 1;
+}
+.upload-form button {
+  padding: 0.5rem 1rem;
+  background: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: var(--slider-radius);
+  cursor: pointer;
+  transition: background var(--slider-transition);
+}
+.upload-form button:hover {
+  background: var(--primary-color);
+}
+
+.image-slider-section {
+  margin-top: var(--slider-gap);
+}
+.image-slider-section h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  color: var(--primary-color);
+  margin-bottom: var(--slider-gap);
+}
+
+.image-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 1000px; /* fix magasság */
+}
+
+.image-slider .slides {
+  display: flex;
+  height: 100%;  /* teljes magasság */
+}
+
+.image-slider .slide {
+  flex: none;         /* szigorúan ne nyújtózkodjon */
+  width: 100%;        /* mindig a slider szélessége */
+  height: 100%;       /* teljes magasság a slides-ból */
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;      /* a kép középre igazításához */
+  align-items: center;
+  justify-content: center;
+}
+
+.image-slider .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* contain helyett ne vágjuk le a széleket */
+  object-position: center;   /* középre igazítjuk, ha keletkeznek üres sávok */
+  border-radius: var(--slider-radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: #000;    /* vagy a gallery háttérszíne, hogy ne legyen fehér csík */
+}
+
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  color: var(--accent-color);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background var(--slider-transition), color var(--slider-transition);
+}
+.slider-nav:hover {
+  background: rgba(255,255,255,0.9);
+}
+.slider-nav.prev { left: 1rem; }
+.slider-nav.next { right: 1rem; }
+
+.errors {
+  list-style: none;
+  color: #c00;
+  margin-bottom: 0.5rem;
+}
+
+.gallery {
+  /* a korábbi padding / margin-ok mellé tegyünk alul is teret */
+  padding-bottom: 8rem; /* vagy amennyi biztosan kilátszik a footer fölött */
+}
+
+/* Törlés gomb stílusa */
+/* Törlés gomb centerezése és igazi pirosítása */
+#deleteForm {
+  text-align: center !important;
+  margin: 2rem !important;
+}
+
+#deleteForm button.btn-danger {
+  display: inline-block !important;   /* csak a szöveg szélessége */
+  width: auto !important;
+  background-color: #e3342f !important; /* élénk piros */
+  border-color: #e3342f !important;
+  color: #fff !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 600 !important;
+  border-radius: var(--slider-radius) !important;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#deleteForm button.btn-danger:hover {
+  background-color: #cc1f1a !important;
+  border-color: #cc1f1a !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 768px) {
+  .image-slider {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-nav.prev { left: 0.5rem; }
+  .slider-nav.next { right: 0.5rem; }
+}

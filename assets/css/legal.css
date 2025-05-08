@@ -1,0 +1,31 @@
+article.legal {
+  max-width: 800px;
+  margin: var(--gap) auto;
+  padding: var(--gap);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+article.legal h1 {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e1e1e1;
+  padding-bottom: 0.5rem;
+}
+article.legal h2 {
+  font-size: 1.25rem;
+  color: var(--accent-color);
+  margin: 1.5rem 0 0.75rem;
+}
+article.legal p,
+article.legal ul,
+article.legal ol {
+  color: var(--text-color);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+article.legal ul,
+article.legal ol {
+  padding-left: 1.25rem;
+}
